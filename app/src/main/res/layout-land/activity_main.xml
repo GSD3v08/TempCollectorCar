@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/consLayout"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logoImageMain"
+        android:layout_width="173dp"
+        android:layout_height="214dp"
+        android:layout_marginLeft="50dp"
+        android:src="@drawable/logo_main_xhdpi"
+         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btDevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bt_find_devices"
+        app:layout_constraintTop_toTopOf="@id/logoImageMain"
+        app:layout_constraintStart_toEndOf="@id/logoImageMain"
+        app:layout_constraintBottom_toBottomOf="@id/logoImageMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="findDevicesBt"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+     <LinearLayout
+         android:id="@+id/linearLayout"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="20dp"
+         android:orientation="horizontal"
+         android:gravity="center"
+         app:layout_constraintTop_toBottomOf="@id/btDevice"
+         app:layout_constraintStart_toStartOf="@id/btDevice"
+         app:layout_constraintEnd_toEndOf="@id/btDevice" >
+
+        <TextView
+            android:id="@+id/BtLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bluetooth Status: "
+            android:textColor="@color/color_variant"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            style=""/>
+
+         <TextView
+             android:id="@+id/BtStatus"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Off"
+             android:textColor="@color/color_on_background"
+             android:textSize="17sp"
+             android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintStart_toStartOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@id/linearLayout" >
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_bluetooth"
+            android:tint="@color/color_primary"/>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

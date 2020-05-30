@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/default_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageBt"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:background="@drawable/ic_bluetooth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvNameDevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generic Device"
+        android:textSize="15sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginLeft="@dimen/default_margin"
+        app:layout_constraintStart_toEndOf="@id/imageBt"
+        app:layout_constraintTop_toTopOf="@id/imageBt" />
+
+    <TextView
+        android:id="@+id/tvMac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/generic_mac"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:textSize="13sp"
+        android:layout_marginLeft="@dimen/default_margin"
+        app:layout_constraintStart_toEndOf="@id/imageBt"
+        app:layout_constraintTop_toBottomOf="@id/tvNameDevice"
+        app:layout_constraintBottom_toBottomOf="@id/imageBt"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
