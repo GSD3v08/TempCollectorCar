@@ -26,7 +26,7 @@ class TempViewModel: ViewModel() {
 
 
     /***
-     * Thread that receive data from arduino
+     *
      */
     inner class MyBtService: Thread()
     {
