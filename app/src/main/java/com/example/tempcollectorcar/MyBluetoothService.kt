@@ -18,6 +18,7 @@ class MyBluetoothService(val handler: Handler): Thread()
     override fun run() {
         Log.d(Connection.TAG, "BT Thread Service Started.")
         var numBytes:Int // bytes returned from read()
+
         // Keep listening to the InputStream until an exception occurs.
         while (true) {
             // Read from the InputStream.

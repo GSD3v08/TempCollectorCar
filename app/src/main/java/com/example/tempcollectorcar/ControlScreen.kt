@@ -1,30 +1,16 @@
 package com.example.tempcollectorcar
 
-import android.app.Activity
-import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothSocket
-import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.os.Message
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_control_screen.*
-import kotlinx.android.synthetic.main.activity_control_screen.view.*
-import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
-import java.nio.charset.Charset
-import java.text.DecimalFormat
-import java.util.UUID
 
 
 // Defines several constants used when transmitting messages between the
@@ -53,16 +39,24 @@ class ControlScreen : AppCompatActivity() {
 
     }
 
-
     private fun initService() {
         circle_progress.setStartPositionInDegrees(90)
         circle_progress.textSize = 40
         //circle_progress.textColor = Color.
         circle_progress.elevation = 5.0f
 
-        handler = MyHandler(this)
+        /*handler = MyHandler(this)
         btService = MyBluetoothService(handler)
-        btService.start()
+        btService.start()*/
+
+        val viewModel = ViewModelProvider(this).get(TempViewModel::class.java)
+        viewModel.start()
+        viewModel.temp.observe(this, object: Observer<String>{
+            override fun onChanged(t: String?) {
+                circle_progress.setText(viewModel.temp.value)
+            }
+
+        })
 
     }
 
@@ -72,7 +66,6 @@ class ControlScreen : AppCompatActivity() {
         //Connection.cancel()
         Log.d(TAG, "Socket Disconnected")
     }
-
 
     fun ledTest(view: View) {
 
@@ -93,7 +86,11 @@ class ControlScreen : AppCompatActivity() {
     }
 }
 
-private class MyHandler(context:ControlScreen):Handler()
+
+/***
+ *  Handler no longer needed by implementing ViewModel Class
+ */
+/*private class MyHandler(context:ControlScreen):Handler()
 {
     val activity = context
     var numAdd = activity.numAdd
@@ -106,24 +103,17 @@ private class MyHandler(context:ControlScreen):Handler()
                 numAdd += readBuff
                 val endLine = numAdd.indexOf('#')
                 if(endLine > 0) {
-                    //var subIn = numAdd.substring(0, endLine)
-                    //Toast.makeText(applicationContext, subIn, Toast.LENGTH_SHORT).show();
                     if(numAdd.startsWith('~'))
                     {
                         var read = numAdd.substring(1, 3) + "°C"
-                        //activity.temp_number.text = read
-                        //activity.progressView.setProgress(numAdd.substring(1, 3).toInt())
-                        //activity.donut_progress.setDonut_progress(string.toString())
-                        //activity.cpv.setText(numAdd.substring(1, 3))
                         activity.circle_progress.setText(read)
                     }
                     numAdd = ""
-                    //subIn = ""
                 }
             }
         }
     }
-}
+}*/
 
 
 

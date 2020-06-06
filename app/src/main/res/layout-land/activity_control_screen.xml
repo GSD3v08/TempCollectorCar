@@ -85,7 +85,7 @@
         app:iconSize="55dp"
         app:iconTint="#2196F3"
         app:iconPadding="2dp"
-        android:onClick="LedTestOff" />
+        android:onClick="ledTestOff" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideLine"
